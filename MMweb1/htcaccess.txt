@@ -1,0 +1,13 @@
+RewriteEngine on
+
+# Redirect to another domain: www.payd.us.
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP_HOST} !^(www\.)?payd\.us$ [NC]
+RewriteRule .* http://www.anml.us%{REQUEST_URI} [R=301,L]
+# Same for HTTPS:
+RewriteCond %{HTTPS} on
+RewriteCond %{HTTP_HOST} !^(www\.)?payd\.us$ [NC]
+RewriteRule .* https://www.payd.us%{REQUEST_URI} [R=301,L]
+
+# 301 Redirect URLs.
+Redirect 301 /weanml.github.io/anml2 http://www.payd.us
